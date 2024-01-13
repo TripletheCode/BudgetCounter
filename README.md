@@ -88,7 +88,6 @@
 
     <div class="container">
         <div class="section">
-            <h1>Budget Sheet</h1>
 
             <label for="incomeSource">Income Source:</label>
             <input type="text" id="incomeSource" placeholder="Enter income source">
