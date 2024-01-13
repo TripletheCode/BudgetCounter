@@ -97,8 +97,8 @@
 
     <div class="container">
         <div class="section">
-            <h1>Budget Sheet</h1>
-            <p>Enter your income and expenses below:</p>
+        
+            <p>Enter your income and expenses below. Your source would be either where your income derives from or what the expense is paying for:</p>
 
             <label for="incomeSource">Income Source:</label>
             <input type="text" id="incomeSource" placeholder="Enter income source">
