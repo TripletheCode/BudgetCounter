@@ -1,3 +1,5 @@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,17 +11,17 @@
             margin: 20px;
             text-align: center;
             background-color: #2c3e50;
-            color: #ecf0f1;
+            color: #fff;
         }
 
         h1, h2, label, p, li, .remainder {
-            color: #2c3e50;
+            color: #fff;
         }
 
         input {
-            padding: 8px;
+            padding: 10px;
             width: 200px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 1px solid #3498db;
             border-radius: 5px;
             background-color: #34495e;
@@ -29,7 +31,7 @@
         button {
             background-color: #3498db;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -47,7 +49,7 @@
         /* Dark mode styles */
         body.dark-mode {
             background-color: #2c3e50;
-            color: #ecf0f1;
+            color: #fff;
         }
 
         body.dark-mode button,
@@ -59,34 +61,53 @@
         body.dark-mode button:hover {
             background-color: #2c3e50;
         }
+
+        /* Layout adjustments */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .summary {
+            margin-top: 30px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            input {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Budget Sheet</h1>
+    <div class="container">
+        <h1>Budget Sheet</h1>
 
-    <label for="incomeSource">Income Source:</label>
-    <input type="text" id="incomeSource" placeholder="Enter income source">
-    <label for="income">Income:</label>
-    <input type="number" id="income" placeholder="Enter income">
-    <button onclick="addIncome()">Add Income</button>
+        <label for="incomeSource">Income Source:</label>
+        <input type="text" id="incomeSource" placeholder="Enter income source">
+        <label for="income">Income:</label>
+        <input type="number" id="income" placeholder="Enter income">
+        <button onclick="addIncome()">Add Income</button>
 
-    <label for="expenseSource">Expense Source:</label>
-    <input type="text" id="expenseSource" placeholder="Enter expense source">
-    <label for="expense">Expense:</label>
-    <input type="number" id="expense" placeholder="Enter expense">
-    <button onclick="addExpense()">Add Expense</button>
+        <label for="expenseSource">Expense Source:</label>
+        <input type="text" id="expenseSource" placeholder="Enter expense source">
+        <label for="expense">Expense:</label>
+        <input type="number" id="expense" placeholder="Enter expense">
+        <button onclick="addExpense()">Add Expense</button>
 
-    <h2>Summary</h2>
-    <ul id="budgetList"></ul>
+        <h2>Summary</h2>
+        <ul id="budgetList" class="summary"></ul>
 
-    <p>Total Income: $<span id="totalIncome">0.00</span></p>
-    <p>Total Expenses: $<span id="totalExpense">0.00</span></p>
+        <p>Total Income: $<span id="totalIncome">0.00</span></p>
+        <p>Total Expenses: $<span id="totalExpense">0.00</span></p>
 
-    <p class="remainder">Remainder: $<span id="remainder">0.00</span></p>
+        <p class="remainder">Remainder: $<span id="remainder">0.00</span></p>
 
-    <button class="download" onclick="downloadPage()">Download Page</button>
-    <button class="print" onclick="printPage()">Print Page</button>
+        <button class="download" onclick="downloadPage()">Download Page</button>
+        <button class="print" onclick="printPage()">Print Page</button>
+    </div>
 
     <script>
         let budgetLines = [];
@@ -169,4 +190,3 @@
 </body>
 </html>
 
- 
