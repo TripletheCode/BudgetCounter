@@ -91,15 +91,49 @@
             color: #ecf0f1;
             margin-right: 10px;
         }
+
+        /* Clear button styles */
+        .clear-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .clear-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Instructions styles */
+        .instructions {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="section">
-        
-            <p>Enter your income and expenses below. Your source would be either where your income derives from or what the expense is paying for:</p>
+        <h1>Budget Sheet</h1>
 
+        <div class="instructions">
+            <p>Enter your income and expenses below. Select the time frame for calculation:</p>
+        </div>
+
+        <label for="timeframe">Select Timeframe:</label>
+        <select id="timeframe" onchange="updateSummary()">
+            <option value="weekly">Weekly</option>
+            <option value="biweekly">Bi-weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="annual">Annual</option>
+        </select>
+
+        <button class="clear-btn" onclick="clearEntries()">Clear Entries</button>
+
+        <div class="section">
             <label for="incomeSource">Income Source:</label>
             <input type="text" id="incomeSource" placeholder="Enter income source">
             <label for="income">Income:</label>
@@ -117,12 +151,6 @@
 
         <div class="section">
             <h2>Summary</h2>
-            <label for="timeframe">Select Timeframe:</label>
-            <select id="timeframe" onchange="updateSummary()">
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
-                <option value="annual">Annual</option>
-            </select>
             <ul id="budgetList" class="summary"></ul>
 
             <p>Total Income: $<span id="totalIncome">0.00</span></p>
@@ -190,7 +218,7 @@
                 budgetList.appendChild(listItem);
 
                 if (line.type === 'income') {
-                    totalIncome += parseFloat (line.amount);
+                    totalIncome += parseFloat(calculateAmount(line.amount));
                 } else if (line.type === 'expense') {
                     totalExpense += parseFloat(calculateAmount(line.amount));
                 }
@@ -204,12 +232,21 @@
         }
 
         function calculateAmount(amount) {
-            if (timeframe === 'monthly') {
+            if (timeframe === 'weekly') {
+                return amount;
+            } else if (timeframe === 'biweekly') {
+                return (parseFloat(amount) * 2).toFixed(2);
+            } else if (timeframe === 'monthly') {
                 return (parseFloat(amount) * 4.33).toFixed(2);
             } else if (timeframe === 'annual') {
                 return (parseFloat(amount) * 52).toFixed(2);
             }
             return amount;
+        }
+
+        function clearEntries() {
+            budgetLines = [];
+            updateSummary();
         }
 
         function downloadPage() {
@@ -230,4 +267,3 @@
 
 </body>
 </html>
-
