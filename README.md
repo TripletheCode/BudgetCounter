@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,18 +22,21 @@
         }
 
         input {
-            padding: 5px;
+            padding: 8px;
             width: 200px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
         }
 
         button {
             background-color: #3498db;
             color: #fff;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            border-radius: 5px;
         }
 
         button:hover {
@@ -52,24 +54,26 @@
 
         li {
             background-color: #ecf0f1;
-            margin: 5px;
-            padding: 8px;
-            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
             display: inline-block;
+            color: #2c3e50;
         }
 
         p {
-            margin: 10px 0;
+            margin: 15px 0;
             color: #2c3e50;
         }
 
         button.download, button.print {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .remainder {
-            margin-top: 20px;
+            margin-top: 30px;
             font-weight: bold;
+            color: #2c3e50;
         }
 
         /* Dark mode styles */
@@ -77,11 +81,28 @@
             background-color: #2c3e50;
             color: #ecf0f1;
         }
+
+        body.dark-mode button,
+        body.dark-mode input {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        body.dark-mode button:hover {
+            background-color: #2c3e50;
+        }
+
+        body.dark-mode li {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        body.dark-mode .remainder {
+            color: #ecf0f1;
+        }
     </style>
 </head>
 <body>
-
-
 
     <label for="incomeSource">Income Source:</label>
     <input type="text" id="incomeSource" placeholder="Enter income source">
@@ -190,6 +211,11 @@
             darkMode = !darkMode;
             document.body.classList.toggle('dark-mode', darkMode);
         }
+    </script>
+
+</body>
+</html>
+
     </script>
 
 </body>
