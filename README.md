@@ -11,13 +11,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        h1 {
-            color: #3498db;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
+        h1, h2, label, p, li, .remainder {
             color: #2c3e50;
         }
 
@@ -43,37 +37,8 @@
             background-color: #2980b9;
         }
 
-        h2 {
-            color: #2c3e50;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #ecf0f1;
-            margin: 10px;
-            padding: 15px;
-            border-radius: 8px;
-            display: inline-block;
-            color: #2c3e50;
-        }
-
-        p {
-            margin: 15px 0;
-            color: #2c3e50;
-        }
-
-        button.download, button.print {
-            margin-top: 30px;
-        }
-
-        .remainder {
-            margin-top: 30px;
-            font-weight: bold;
-            color: #2c3e50;
+        h1 {
+            color: #3498db;
         }
 
         /* Dark mode styles */
@@ -91,18 +56,10 @@
         body.dark-mode button:hover {
             background-color: #2c3e50;
         }
-
-        body.dark-mode li {
-            background-color: #34495e;
-            color: #ecf0f1;
-        }
-
-        body.dark-mode .remainder {
-            color: #ecf0f1;
-        }
     </style>
 </head>
 <body>
+
 
     <label for="incomeSource">Income Source:</label>
     <input type="text" id="incomeSource" placeholder="Enter income source">
@@ -216,7 +173,4 @@
 </body>
 </html>
 
-    </script>
-
-</body>
-</html>
+ 
