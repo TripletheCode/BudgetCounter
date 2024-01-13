@@ -131,7 +131,7 @@
     <div class="container">
 
        <div class="instructions">
-            <p>Enter your income and expenses below. Select the time frame for calculation:</p>
+            <p>Enter your income and expenses below. Select the time frame for your budget:</p>
         </div>
 
         <label for="timeframe">Select Timeframe:</label>
