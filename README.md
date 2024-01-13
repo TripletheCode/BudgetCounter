@@ -130,7 +130,7 @@
 
     <div class="container">
 
-        <div class="instructions">
+       <div class="instructions">
             <p>Enter your income and expenses below. Select the time frame for calculation:</p>
         </div>
 
@@ -218,29 +218,30 @@
 
             timeframe = timeframeSelect.value;
 
-            budgetList.innerHTML =           '';
+            budgetList.innerHTML = '';
 
             let totalIncome = 0;
             let totalExpense = 0;
 
             budgetLines.forEach(line => {
                 const listItem = document.createElement('li');
-                listItem.textContent = `${line.type.charAt(0).toUpperCase() + line.type.slice(1)} - ${line.source}: $${calculateAmount(line.amount)}`;
+                listItem.textContent = `${line.type.charAt(0).toUpperCase() + line.type.slice(1)} - ${line.source}: $${line.amount}`;
                 budgetList.appendChild(listItem);
 
                 if (line.type === 'income') {
-                    totalIncome += parseFloat(calculateAmount(line.amount));
+                    totalIncome += parseFloat(line.amount);
                 } else if (line.type === 'expense') {
-                    totalExpense += parseFloat(calculateAmount(line.amount));
+                    totalExpense += parseFloat(line.amount);
                 }
             });
 
-            totalIncomeElement.textContent = calculateAmount(totalIncome.toFixed(2));
-            totalExpenseElement.textContent = calculateAmount(totalExpense.toFixed(2));
+            totalIncomeElement.textContent = totalIncome.toFixed(2);
+            totalExpenseElement.textContent = totalExpense.toFixed(2);
 
             const remainder = totalIncome - totalExpense;
-            remainderElement.textContent = calculateAmount(remainder.toFixed(2));
+            remainderElement.textContent = remainder.toFixed(2);
         }
+
 
         function calculateAmount(amount) {
             if (timeframe === 'weekly') {
@@ -280,8 +281,5 @@
 </html>
 
 
-
-</body>
-</html>
 
 
