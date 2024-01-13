@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 20px;
             text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         h1 {
@@ -70,10 +71,17 @@
             margin-top: 20px;
             font-weight: bold;
         }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
     </style>
 </head>
 <body>
 
+    <h1>Budget Sheet</h1>
 
     <label for="incomeSource">Income Source:</label>
     <input type="text" id="incomeSource" placeholder="Enter income source">
@@ -98,8 +106,11 @@
     <button class="download" onclick="downloadPage()">Download Page</button>
     <button class="print" onclick="printPage()">Print Page</button>
 
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
     <script>
         let budgetLines = [];
+        let darkMode = false;
 
         function addIncome() {
             addLine("income");
@@ -167,13 +178,17 @@
             a.href = URL.createObjectURL(blob);
             a.download = 'budget_sheet.html';
             document.body.appendChild(a);
-            a            
             a.click();
             document.body.removeChild(a);
         }
 
         function printPage() {
             window.print();
+        }
+
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark-mode', darkMode);
         }
     </script>
 
