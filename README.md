@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,10 +65,15 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
+            text-align: left;
+        }
+
+        .section {
+            margin-bottom: 30px;
         }
 
         .summary {
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         /* Responsive adjustments */
@@ -83,30 +87,38 @@
 <body>
 
     <div class="container">
-        <h1>Budget Sheet</h1>
+        <div class="section">
+            <h1>Budget Sheet</h1>
 
-        <label for="incomeSource">Income Source:</label>
-        <input type="text" id="incomeSource" placeholder="Enter income source">
-        <label for="income">Income:</label>
-        <input type="number" id="income" placeholder="Enter income">
-        <button onclick="addIncome()">Add Income</button>
+            <label for="incomeSource">Income Source:</label>
+            <input type="text" id="incomeSource" placeholder="Enter income source">
+            <label for="income">Income:</label>
+            <input type="number" id="income" placeholder="Enter income">
+            <button onclick="addIncome()">Add Income</button>
+        </div>
 
-        <label for="expenseSource">Expense Source:</label>
-        <input type="text" id="expenseSource" placeholder="Enter expense source">
-        <label for="expense">Expense:</label>
-        <input type="number" id="expense" placeholder="Enter expense">
-        <button onclick="addExpense()">Add Expense</button>
+        <div class="section">
+            <label for="expenseSource">Expense Source:</label>
+            <input type="text" id="expenseSource" placeholder="Enter expense source">
+            <label for="expense">Expense:</label>
+            <input type="number" id="expense" placeholder="Enter expense">
+            <button onclick="addExpense()">Add Expense</button>
+        </div>
 
-        <h2>Summary</h2>
-        <ul id="budgetList" class="summary"></ul>
+        <div class="section">
+            <h2>Summary</h2>
+            <ul id="budgetList" class="summary"></ul>
 
-        <p>Total Income: $<span id="totalIncome">0.00</span></p>
-        <p>Total Expenses: $<span id="totalExpense">0.00</span></p>
+            <p>Total Income: $<span id="totalIncome">0.00</span></p>
+            <p>Total Expenses: $<span id="totalExpense">0.00</span></p>
 
-        <p class="remainder">Remainder: $<span id="remainder">0.00</span></p>
+            <p class="remainder">Remainder: $<span id="remainder">0.00</span></p>
+        </div>
 
-        <button class="download" onclick="downloadPage()">Download Page</button>
-        <button class="print" onclick="printPage()">Print Page</button>
+        <div class="section">
+            <button class="download" onclick="downloadPage()">Download Page</button>
+            <button class="print" onclick="printPage()">Print Page</button>
+        </div>
     </div>
 
     <script>
@@ -152,7 +164,8 @@
             let totalIncome = 0;
             let totalExpense = 0;
 
-            budgetLines.forEach(line => {
+            budgetLines.forEach(line =>
+            {
                 const listItem = document.createElement('li');
                 listItem.textContent = `${line.type.charAt(0).toUpperCase() + line.type.slice(1)} - ${line.source}: $${line.amount}`;
                 budgetList.appendChild(listItem);
