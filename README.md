@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,11 +9,11 @@
             font-family: 'Arial', sans-serif;
             margin: 20px;
             text-align: center;
-            background-color: #2c3e50;
+            background-color: #1a1a1a;
             color: #fff;
         }
 
-        h1, h2, label, p, li, .remainder {
+        h1, h2, label, p, li, .remainder, .instructions {
             color: #fff;
         }
 
@@ -22,11 +23,11 @@
             margin-bottom: 20px;
             border: 1px solid #3498db;
             border-radius: 5px;
-            background-color: #34495e;
+            background-color: #2c3e50;
             color: #ecf0f1;
         }
 
-        button {
+        button, select {
             background-color: #3498db;
             color: #fff;
             padding: 12px 24px;
@@ -36,7 +37,7 @@
             border-radius: 5px;
         }
 
-        button:hover {
+        button:hover, select:hover {
             background-color: #2980b9;
         }
 
@@ -46,18 +47,20 @@
 
         /* Dark mode styles */
         body.dark-mode {
-            background-color: #2c3e50;
+            background-color: #1a1a1a;
             color: #fff;
         }
 
         body.dark-mode button,
+        body.dark-mode select,
         body.dark-mode input {
-            background-color: #34495e;
+            background-color: #2c3e50;
             color: #ecf0f1;
         }
 
-        body.dark-mode button:hover {
-            background-color: #2c3e50;
+        body.dark-mode button:hover,
+        body.dark-mode select:hover {
+            background-color: #1a1a1a;
         }
 
         /* Layout adjustments */
@@ -65,6 +68,10 @@
             max-width: 600px;
             margin: 0 auto;
             text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .section {
@@ -73,6 +80,17 @@
 
         .summary {
             margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .summary li {
+            border-bottom: 1px solid #2c3e50;
+            padding: 10px 0;
+        }
+
+        .summary li:last-child {
+            border-bottom: none;
         }
 
         /* Responsive adjustments */
@@ -80,16 +98,6 @@
             input {
                 width: 100%;
             }
-        }
-
-        /* Dropdown styles */
-        select {
-            padding: 10px;
-            border: 1px solid #3498db;
-            border-radius: 5px;
-            background-color: #34495e;
-            color: #ecf0f1;
-            margin-right: 10px;
         }
 
         /* Clear button styles */
@@ -107,6 +115,11 @@
             background-color: #c0392b;
         }
 
+        /* Download and Print buttons styles */
+        .download, .print {
+            margin-right: 10px;
+        }
+
         /* Instructions styles */
         .instructions {
             font-size: 14px;
@@ -117,8 +130,7 @@
 <body>
 
     <div class="container">
-        <h1>Budget Sheet</h1>
-
+    
         <div class="instructions">
             <p>Enter your income and expenses below. Select the time frame for calculation:</p>
         </div>
@@ -267,3 +279,5 @@
 
 </body>
 </html>
+
+
