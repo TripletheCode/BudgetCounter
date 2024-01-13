@@ -8,7 +8,8 @@
             font-family: 'Arial', sans-serif;
             margin: 20px;
             text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #2c3e50;
+            color: #ecf0f1;
         }
 
         h1, h2, label, p, li, .remainder {
@@ -21,6 +22,8 @@
             margin-bottom: 15px;
             border: 1px solid #3498db;
             border-radius: 5px;
+            background-color: #34495e;
+            color: #ecf0f1;
         }
 
         button {
@@ -60,6 +63,7 @@
 </head>
 <body>
 
+    <h1>Budget Sheet</h1>
 
     <label for="incomeSource">Income Source:</label>
     <input type="text" id="incomeSource" placeholder="Enter income source">
@@ -84,11 +88,8 @@
     <button class="download" onclick="downloadPage()">Download Page</button>
     <button class="print" onclick="printPage()">Print Page</button>
 
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-
     <script>
         let budgetLines = [];
-        let darkMode = false;
 
         function addIncome() {
             addLine("income");
@@ -162,11 +163,6 @@
 
         function printPage() {
             window.print();
-        }
-
-        function toggleDarkMode() {
-            darkMode = !darkMode;
-            document.body.classList.toggle('dark-mode', darkMode);
         }
     </script>
 
