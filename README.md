@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +8,7 @@
             font-family: 'Arial', sans-serif;
             margin: 20px;
             text-align: center;
-            background-color: #1a1a1a;
+            background-color: #17202A; /* Dark Blue Background */
             color: #fff;
         }
 
@@ -23,7 +22,7 @@
             margin-bottom: 20px;
             border: 1px solid #3498db;
             border-radius: 5px;
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: #ecf0f1;
         }
 
@@ -47,30 +46,30 @@
 
         /* Dark mode styles */
         body.dark-mode {
-            background-color: #1a1a1a;
+            background-color: #17202A;
             color: #fff;
         }
 
         body.dark-mode button,
         body.dark-mode select,
         body.dark-mode input {
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: #ecf0f1;
         }
 
         body.dark-mode button:hover,
         body.dark-mode select:hover {
-            background-color: #1a1a1a;
+            background-color: #2c3e50;
         }
 
         /* Layout adjustments */
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: left;
             padding: 20px;
             border-radius: 10px;
-            background-color: #333;
+            background-color: #2c3e50; /* Slightly lighter blue */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
@@ -85,7 +84,7 @@
         }
 
         .summary li {
-            border-bottom: 1px solid #2c3e50;
+            border-bottom: 1px solid #34495e;
             padding: 10px 0;
         }
 
@@ -130,7 +129,8 @@
 <body>
 
     <div class="container">
-    
+        <h1>Budget Sheet</h1>
+
         <div class="instructions">
             <p>Enter your income and expenses below. Select the time frame for calculation:</p>
         </div>
@@ -219,7 +219,7 @@
 
             timeframe = timeframeSelect.value;
 
-            budgetList.innerHTML = '';
+            budgetList.innerHTML =           '';
 
             let totalIncome = 0;
             let totalExpense = 0;
@@ -276,6 +276,11 @@
             window.print();
         }
     </script>
+
+</body>
+</html>
+
+
 
 </body>
 </html>
