@@ -129,7 +129,6 @@
 <body>
 
     <div class="container">
-        <h1>Budget Sheet</h1>
 
         <div class="instructions">
             <p>Enter your income and expenses below. Select the time frame for calculation:</p>
