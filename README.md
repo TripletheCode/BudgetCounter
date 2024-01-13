@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,12 +81,24 @@
                 width: 100%;
             }
         }
+
+        /* Dropdown styles */
+        select {
+            padding: 10px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="section">
+            <h1>Budget Sheet</h1>
+            <p>Enter your income and expenses below:</p>
 
             <label for="incomeSource">Income Source:</label>
             <input type="text" id="incomeSource" placeholder="Enter income source">
@@ -106,6 +117,12 @@
 
         <div class="section">
             <h2>Summary</h2>
+            <label for="timeframe">Select Timeframe:</label>
+            <select id="timeframe" onchange="updateSummary()">
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="annual">Annual</option>
+            </select>
             <ul id="budgetList" class="summary"></ul>
 
             <p>Total Income: $<span id="totalIncome">0.00</span></p>
@@ -122,6 +139,7 @@
 
     <script>
         let budgetLines = [];
+        let timeframe = 'weekly';
 
         function addIncome() {
             addLine("income");
@@ -157,30 +175,41 @@
             const totalIncomeElement = document.getElementById('totalIncome');
             const totalExpenseElement = document.getElementById('totalExpense');
             const remainderElement = document.getElementById('remainder');
+            const timeframeSelect = document.getElementById('timeframe');
+
+            timeframe = timeframeSelect.value;
 
             budgetList.innerHTML = '';
 
             let totalIncome = 0;
             let totalExpense = 0;
 
-            budgetLines.forEach(line =>
-            {
+            budgetLines.forEach(line => {
                 const listItem = document.createElement('li');
-                listItem.textContent = `${line.type.charAt(0).toUpperCase() + line.type.slice(1)} - ${line.source}: $${line.amount}`;
+                listItem.textContent = `${line.type.charAt(0).toUpperCase() + line.type.slice(1)} - ${line.source}: $${calculateAmount(line.amount)}`;
                 budgetList.appendChild(listItem);
 
                 if (line.type === 'income') {
-                    totalIncome += parseFloat(line.amount);
+                    totalIncome += parseFloat (line.amount);
                 } else if (line.type === 'expense') {
-                    totalExpense += parseFloat(line.amount);
+                    totalExpense += parseFloat(calculateAmount(line.amount));
                 }
             });
 
-            totalIncomeElement.textContent = totalIncome.toFixed(2);
-            totalExpenseElement.textContent = totalExpense.toFixed(2);
+            totalIncomeElement.textContent = calculateAmount(totalIncome.toFixed(2));
+            totalExpenseElement.textContent = calculateAmount(totalExpense.toFixed(2));
 
             const remainder = totalIncome - totalExpense;
-            remainderElement.textContent = remainder.toFixed(2);
+            remainderElement.textContent = calculateAmount(remainder.toFixed(2));
+        }
+
+        function calculateAmount(amount) {
+            if (timeframe === 'monthly') {
+                return (parseFloat(amount) * 4.33).toFixed(2);
+            } else if (timeframe === 'annual') {
+                return (parseFloat(amount) * 52).toFixed(2);
+            }
+            return amount;
         }
 
         function downloadPage() {
